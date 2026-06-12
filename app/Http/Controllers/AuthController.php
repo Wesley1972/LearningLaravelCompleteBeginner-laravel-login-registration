@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -32,6 +33,25 @@ class AuthController extends Controller
 
         return back()->withInput()->with('status', 'Invalid credentials');
     }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'reset-password' => 'required',
+            'confirm-password' => 'required'
+        ]);
+
+        if ($request->input('reset-password') === $request->input('confirm-password')) {
+            /** @var \App\Models\User $user */
+            $user = Auth::user();
+            $user->password = Hash::make($request->input('reset-password'));
+            $user->save();
+
+            return redirect()->back()->with('status', 'Your password has been succssfully updated');
+        } else {
+            return redirect()->back()->with('status', 'Password dont match, please try again');
+        }
+    } 
 }
 
 // explain it shortly and in simple terms

@@ -18,6 +18,10 @@ Route::post('register', [RegistrationController::class, 'processForm'])->name('r
 Route::post('login', [AuthController::class, 'login'])->name('login.process')
     ->middleware('throttle:5,1');
 
+Route::put('resetPassword', [AuthController::class, 'resetPassword'])
+    ->name('reset.password.process')
+    ->middleware('auth');
+
 Route::get('register', [RegistrationController::class, 'showForm'])->name('register');
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/', [HomepageController::class, 'homepage'])->name('homepage');
