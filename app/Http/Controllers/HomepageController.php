@@ -10,4 +10,8 @@ class HomepageController extends Controller
     public function homepage() {
         return view('home');
     }
+
+    public function showForgotPasswordPage() {
+        return view('forgot-password');
+    }
 }

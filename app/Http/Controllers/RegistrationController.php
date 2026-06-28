@@ -16,12 +16,14 @@ class RegistrationController extends Controller
     public function processForm(Request $request) {
         $request->validate([
             'name' => 'required|unique:users|string',
+            'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
 
         User::create([
-            'name' => $request->name,
-            'password' => Hash::make($request->password)
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
         ]);
 
         return redirect()->route('login')->with('status', 'Registration successful, you can now login');

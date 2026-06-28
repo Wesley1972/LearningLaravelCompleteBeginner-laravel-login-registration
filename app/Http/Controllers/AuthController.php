@@ -51,7 +51,7 @@ class AuthController extends Controller
         } else {
             return redirect()->back()->with('status', 'Password dont match, please try again');
         }
-    } 
+    }
 }
 
 // explain it shortly and in simple terms

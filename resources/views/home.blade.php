@@ -22,6 +22,9 @@
         <button type="submit">Reset Password</button>
     </form>
 @else
-    <a href="{{ route('register') }}">Register</a>
-    <a href="{{ route('login') }}">Login</a>
+    <a href="{{ route('register') }}">Register</a><br>
+    <a href="{{ route('login') }}">Login</a><br>
+    <a href="{{ route('forgot.password') }}">Forgot Password</a><br>
+    <a href="{{ route('list-forgot-password-links') }}">View forgot password links</a><br>
+    <a href="{{ route('users-list') }}">View Users</a>
 @endauth

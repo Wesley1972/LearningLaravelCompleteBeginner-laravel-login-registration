@@ -9,6 +9,12 @@
         <span role="alert">{{ $message }}</span>
     @enderror <br>
 
+    <input type="text" name="email" placeholder="Email">
+
+    @error('email')
+        <span role="alert">{{ $message }}</span>
+    @enderror <br>
+
     <input type="text" name="password" placeholder="Password">
 
     @error('password')
